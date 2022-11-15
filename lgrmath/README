@@ -47,7 +47,3 @@ It is possible to run latex + dvipdfmx, pdflatex, lualatex, or
 xelatex directly on lgrmath.dtx rather than on lgrmath.tex.
 The PDF will then not include the commented source code.
 
-Whether with or without source code, PDF produced via latex +
-dvipdfmx or xelatex has smaller size than the one from
-pdflatex or lualatex due to font compression differences.
-
