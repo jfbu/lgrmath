@@ -38,7 +38,7 @@ lgrmath.zip: $(docfiles) $(sourcefiles) $(texfiles) Makefile \
 	cp -a $(sourcefiles)  ctanbuild/
 	cd ctanbuild && ./private.sh && ./makepdf.sh
 	cd ctanbuild && mv $(docfiles) $(sourcefiles) lgrmath/
-	cd ctanbuild && rm lgrmath*
+	cd ctanbuild && rm lgrmath.*
 	chmod -R ugo+r        ctanbuild/lgrmath
 	@echo 'Listing submission files'
 	ls -al                ctanbuild/lgrmath
