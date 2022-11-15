@@ -11,6 +11,8 @@
 *.zip
 *.out
 *.lot
+*.sty
+temp.tex
 auto
 ctanbuild/*
 !ctanbuild/private.sh
