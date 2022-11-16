@@ -2,7 +2,7 @@
 % Execute etex on this file to extract package files.
 % See in README for more build instructions.
 %<*dtx>
-\def\dtxtimestamp {Time-stamp: <15-11-2022 at 19:57:51 CET>}
+\def\dtxtimestamp {Time-stamp: <15-11-2022 at 23:43:17 CET>}
 %%
 %% Package: lgrmath
 %% Greek in math mode via LGR font of one's choice (JFB)
@@ -143,13 +143,13 @@
 \usepackage{geometry}
 \usepackage[english]{babel}
 
-\usepackage{multicol}
 \usepackage{color}
 \definecolor{joli}{RGB}{225,95,0}
 \definecolor{JOLI}{RGB}{225,95,0}
 \definecolor{urlcolor}{RGB}{38,128,192}
 
 \usepackage{colorframed}
+\definecolor{shadecolor}{RGB}{223,219,195}
 
 \usepackage{hyperref}
 \hypersetup{%
@@ -200,7 +200,7 @@ pdfpagemode=UseNone,%
 }
 \pdfstringdefDisableCommands{\def\lgrmath{lgrmath\xspace}}
 
-\usepackage{centeredline}
+
 \usepackage{lgrmath}
 
 \begin{document}\renewcommand\familydefault\sfdefault
@@ -257,9 +257,143 @@ package loading time.
 
 Here are the options recognized by the package:
 \begin{description}
-\item[font=\meta{font family}] This specifies which font to use.  It defaults
-    to |lmr| (this LGR-encoded font is provided as part of the support files
-    of the package \ctanpkg{cbfonts}).
+\item[font=\meta{font\textunderscore name}] This specifies which font (font family in the
+  sens of the \LaTeX{} font selection scheme) to use.  It defaults to |lmr|.
+
+  The allowable names \meta{font\textunderscore name}'s are those |foo| for
+  which a file |LGRfoo.fd| or |lgrfoo.fd| exists on the system.  It happens
+  sometimes that for example a |scale| parameter can be set by defining a
+  suitable macro before hand, advanced \LaTeX{} users will understand what to
+  do from having a look at the file.  Or a \LaTeX{} package file is associated
+  and provides some options for such things.
+
+  Here is now a list of suitable such font definition files from which you can
+  extract usable font family names.  This has been obtained via exercising the
+  Unix |find| utility in a \TeX Live 2022 installation which is not a full
+  installation, so possibly more possibilities exist.
+
+  \begin{snugshade}
+\catcode`\'\active\catcode`\`\active
+\def\MacroFont{\ttfamily\footnotesize\def'{\textquotesingle}\def`{\textasciigrave}}
+\catcode\string`\`12 \catcode`\' 12
+\begin{verbatim}
+in directory  /usr/local/texlive/2022/texmf-dist/tex/latex we execute
+$ find . -name 'LGR*fd'
+and then rearrange somewhat the output to put it in alphabetical order,
+and gain some space horizontally so as to obtain a two-column display
+Naturally in many instances the variaous -TLF, -OsF, and so on, refer
+to options of digit characters and have no impact on the Greek letters,
+nevertheless I kept all filenames, just pick one, drop LGR and .fd parts.
+
+./alegreya/                                     ./librefranklin/
+    LGRAlegreya-Inf.fd                              LGRLibreFranklin-Sup.fd
+    LGRAlegreya-LF.fd                               LGRLibreFranklin-TLF.fd
+    LGRAlegreya-OsF.fd                          ./linguisticspro/
+    LGRAlegreya-Sup.fd                              LGRLinguisticsPro-LF.fd
+    LGRAlegreya-TLF.fd                              LGRLinguisticsPro-OsF.fd
+    LGRAlegreya-TOsF.fd                         ./nimbus15/
+    LGRAlegreyaSans-Inf.fd                          LGRNimbuSans.fd
+    LGRAlegreyaSans-LF.fd                           LGRNimbusMono.fd
+    LGRAlegreyaSans-OsF.fd                          LGRNimbusMonoN.fd
+    LGRAlegreyaSans-Sup.fd                          LGRNimbusSerif.fd
+    LGRAlegreyaSans-TLF.fd                      ./noto/
+    LGRAlegreyaSans-TOsF.fd                         LGRNotoSans-LF.fd
+./clara/                                            LGRNotoSans-OsF.fd
+    LGRClara-Sup.fd                                 LGRNotoSans-Sup.fd
+    LGRClara-TLF.fd                                 LGRNotoSans-TLF.fd
+    LGRClara-TOsF.fd                                LGRNotoSans-TOsF.fd
+./cochineal/                                        LGRNotoSansMono-Sup.fd
+    LGRCochineal-LF.fd                              LGRNotoSansMono-TLF.fd
+    LGRCochineal-OsF.fd                             LGRNotoSansMono-TOsF.fd
+    LGRCochineal-TLF.fd                             LGRNotoSerif-LF.fd
+    LGRCochineal-TOsF.fd                            LGRNotoSerif-OsF.fd
+./comfortaa/                                        LGRNotoSerif-Sup.fd
+    LGRcomfortaa.fd                                 LGRNotoSerif-TLF.fd
+./dejavu/                                           LGRNotoSerif-TOsF.fd
+    LGRDejaVuSans-TLF.fd                        ./oldstandard/
+    LGRDejaVuSansCondensed-TLF.fd                   LGROldStandard-Sup.fd
+    LGRDejaVuSansMono-TLF.fd                        LGROldStandard-TLF.fd
+    LGRDejaVuSerif-TLF.fd                       ./opensans/
+    LGRDejaVuSerifCondensed-TLF.fd                  LGRopensans-LF.fd
+./domitian/                                         LGRopensans-OsF.fd
+    LGRDomitian-Inf.fd                              LGRopensans-TLF.fd
+    LGRDomitian-Sup.fd                              LGRopensans-TOsF.fd
+    LGRDomitian-TLF.fd                          ./plex/
+    LGRDomitian-TOsF.fd                             LGRIBMPlexSans-Sup.fd
+./droid/                                            LGRIBMPlexSans-TLF.fd
+    LGRdroidsans.fd                             ./roboto/
+    LGRdroidsansmono.fd                             LGRRoboto-LF.fd
+    LGRdroidserif.fd                                LGRRoboto-OsF.fd
+./ebgaramond/                                       LGRRoboto-TLF.fd
+    LGREBGaramond-Inf.fd                            LGRRoboto-TOsF.fd
+    LGREBGaramond-LF.fd                             LGRRobotoMono-TLF.fd
+    LGREBGaramond-OsF.fd                            LGRRobotoSerif-LF.fd
+    LGREBGaramond-Sup.fd                            LGRRobotoSerif-OsF.fd
+    LGREBGaramond-TLF.fd                            LGRRobotoSerif-Sup.fd
+    LGREBGaramond-TOsF.fd                           LGRRobotoSerif-TLF.fd
+    LGREBGaramondInitials-TLF.fd                    LGRRobotoSerif-TOsF.fd
+./fira/                                             LGRRobotoSlab-TLF.fd
+    LGRFiraMono-Sup.fd                          ./sourcesanspro/
+    LGRFiraMono-TLF.fd                              LGRSourceSansPro-Dnom.fd
+    LGRFiraMono-TOsF.fd                             LGRSourceSansPro-Inf.fd
+    LGRFiraSans-LF.fd                               LGRSourceSansPro-LF.fd
+    LGRFiraSans-OsF.fd                              LGRSourceSansPro-Numr.fd
+    LGRFiraSans-Sup.fd                              LGRSourceSansPro-OsF.fd
+    LGRFiraSans-TLF.fd                              LGRSourceSansPro-Sup.fd
+    LGRFiraSans-TOsF.fd                             LGRSourceSansPro-TLF.fd
+./garamond-libre/                                   LGRSourceSansPro-TOsF.fd
+    LGRGaramondLibre-Inf.fd                     ./step/
+    LGRGaramondLibre-LF.fd                          LGRSTEP-Inf.fd
+    LGRGaramondLibre-OsF.fd                         LGRSTEP-Sup.fd
+    LGRGaramondLibre-Sup.fd                         LGRSTEP-TLF.fd
+./gofonts/                                          LGRSTEP-TOsF.fd
+    LGRGo-TLF.fd                                ./stepgreek/
+    LGRGoMono-TLF.fd                                LGRSTEPGreekTest-Sup.fd
+./lato/                                             LGRSTEPGreekTest-TLF.fd
+    LGRlato-LF.fd                                   LGRSTEPGreekTest-TOsF.fd
+    LGRlato-OsF.fd                              ./theanodidot/
+    LGRlato-TLF.fd                                  LGRTheanoDidot-TLF.fd
+    LGRlato-TOsF.fd                                 LGRTheanoDidot-TOsF.fd
+./libertinegc/                                  ./theanomodern/
+    LGRLinuxLibertineT-LF.fd                        LGRTheanoModern-TLF.fd
+    LGRLinuxLibertineT-OsF.fd                       LGRTheanoModern-TOsF.fd
+    LGRLinuxLibertineT-TLF.fd                   ./theanooldstyle/
+    LGRLinuxLibertineT-TOsF.fd                      LGRTheanoOldStyle-TLF.fd
+./libertinus-type1/                                 LGRTheanoOldStyle-TOsF.fd
+    LGRLibertinusSans-LF.fd        LGRLibertinusSerif-TLF.fd
+    LGRLibertinusSans-OsF.fd       LGRLibertinusSerif-TOsF.fd
+    LGRLibertinusSans-Sup.fd       LGRLibertinusSerifDisplay-LF.fd
+    LGRLibertinusSans-TLF.fd       LGRLibertinusSerifDisplay-OsF.fd
+    LGRLibertinusSans-TOsF.fd      LGRLibertinusSerifDisplay-Sup.fd
+    LGRLibertinusSerif-LF.fd       LGRLibertinusSerifDisplay-TLF.fd
+    LGRLibertinusSerif-OsF.fd      LGRLibertinusSerifDisplay-TOsF.fd
+    LGRLibertinusSerif-Sup.fd      LGRLibertinusSerifInitials-TLF.fd
+
+And now for more, with lowercase `lgr' filenames:
+
+$ find . -name 'lgr*fd'
+./txfontsb/lgrtxr.fd                     ./cm-lgc/lgrfcm.fd
+./txfontsb/lgrtxrc.fd                    ./cm-lgc/lgrfct.fd
+./txfontsb/lgrtxry.fd                    ./cm-lgc/lgrfcs.fd
+./txfontsb/lgrtxryc.fd                   ./epigrafica/lgrepigrafica.fd
+./gfsbodoni/lgrbodoni.fd                 ./gfssolomos/lgrsolomos.fd
+./lxfonts/lgrllcmtt.fd                   ./tempora/lgrtempora-tlf.fd
+./lxfonts/lgrllcmss.fd                   ./tempora/lgrtempora-tosf.fd
+./kerkis/lgrkfn.fd                       ./gfscomplutum/lgrcomplutum.fd
+./kerkis/lgrmaksf.fd                     ./gfsartemisia/lgrartemisiaeuler.fd
+./kerkis/lgrmak.fd                       ./gfsartemisia/lgrartemisia.fd
+./cbfonts-fd/lgrcmro.fd                  ./gentium-tug/lgrgentiumbook.fd
+./cbfonts-fd/lgrcmss.fd                  ./gentium-tug/lgrgentium.fd
+./cbfonts-fd/lgrlmr.fd                   ./gfsbaskerville/lgrgfsbaskerville.fd
+./cbfonts-fd/lgrlcmtt.fd                 ./miama/lgrfmm.fd
+./cbfonts-fd/lgrlmtt.fd                  ./gfsneohellenic/lgrneohellenic.fd
+./cbfonts-fd/lgrlmss.fd                  ./gfsdidot/lgrudidot.fd
+./cbfonts-fd/lgrlmro.fd                  ./gfsporson/lgrporson.fd
+./cbfonts-fd/lgrlcmss.fd
+./cbfonts-fd/lgrcmtt.fd
+./cbfonts-fd/lgrcmr.fd
+\end{verbatim}
+\end{snugshade}
 \item[upshape=\meta{shape}] Declares the shape to be used by the \cs{...up}
   Greek letters and the \cs{lgrmathup} math alphabet.  Defaults to `|n|'
   (without the quotes).
@@ -333,22 +467,9 @@ Here are the options recognized by the package:
 \let\s\string
 \ttfamily
 \lgrmathsetup{style=fReNcH}% testing lowercasing works
-% \begin{multicols}{3}\def\foo{\kern1cm}\raggedcolumns
-% \s\alphatonos\hfill$\alphatonos$ \foo\\
-% \s\epsilontonos\hfill$\epsilontonos$ \foo\\
-% \s\etatonos\hfill$\etatonos$ \foo\\
-% \s\iotatonos\hfill$\iotatonos$ \foo\\
-% \s\omicrontonos\hfill$\omicrontonos$ \foo\\
-% \s\upsilontonos\hfill$\upsilontonos$ \foo\\
-% \s\omegatonos\hfill$\omegatonos$ \foo\\
-% \s\upsilondieresistonos\hfill$\upsilondieresistonos$ \foo\\
-% \s\iotadieresis\hfill$\iotadieresis$ \foo\\
-% \s\iotadieresistonos\hfill$\iotadieresistonos$ \foo\\
-% \s\upsilondieresis\hfill$\upsilondieresis$ \foo\\
-% \end{multicols}
-% \medskip
-\noindent % avoid the \medskip being without effect below
-\centeredline{%
+
+\centering
+
 \begin{tabular}{|lc|lc|lc|lc|}
 \hline
 \s\Alpha&$\Alpha$    &\s\Nu&$\Nu$          &\s\alpha&$\alpha$    &\s\nu&$\nu$\\
@@ -364,24 +485,17 @@ Here are the options recognized by the package:
 \s\Lambda&$\Lambda$  &\s\Psi&$\Psi$        &\s\lambda&$\lambda$  &\s\psi&$\psi$\\
 \s\Mu&$\Mu$          &\s\Omega&$\Omega$    &\s\mu&$\mu$          &\s\omega&$\omega$\\
 \hline
-\end{tabular}}
+\end{tabular}
+
 \medskip
-% il faut mettre le \columnbreak avant le \\ ...
-\begin{multicols}{3}\def\foo{\kern1cm}\raggedcolumns
-\s\varsigma\hfill$\varsigma$ \foo\\
-\s\varvarsigma\hfill$\varvarsigma$ \foo\\
-\s\sampi\hfill$\sampi$ \foo\\
-\s\digamma\hfill$\digamma$ \foo\\
-\s\koppa\hfill$\koppa$ \foo\columnbreak\\
-\s\varSigma\hfill$\varSigma$ \foo\\
-\s\Sampi\hfill$\Sampi$ \foo\\
-\s\Digamma\hfill$\Digamma$ \foo
-\par
-\end{multicols}
-% il y a bien sûr d'horribles espacement verticaux typiques de LaTeX
-\vspace*{-\baselineskip}
+
+\begin{tabular}{lclclc}
+\s\varsigma&$\varsigma$       & \s\digamma&$\digamma$ & \s\varSigma&$\varSigma$ \\
+\s\varvarsigma&$\varvarsigma$ & \s\koppa&$\koppa$     & \s\Sampi&$\Sampi$       \\
+\s\sampi&$\sampi$             &         &             & \s\Digamma&$\Digamma$
+\end{tabular}
 \caption{Greek letters, upright shapes, default family}
-%\label{table:upright}
+\label{table:upright}
 \MakeShortVerb\|
 \end{table}
 
@@ -391,21 +505,8 @@ Here are the options recognized by the package:
 \let\s\string
 \ttfamily
 \lgrmathsetup{style=ISO}
-% \begin{multicols}{3}\def\foo{\kern1cm}\raggedcolumns
-% \s\alphatonos\hfill$\alphatonos$ \foo\\
-% \s\epsilontonos\hfill$\epsilontonos$ \foo\\
-% \s\etatonos\hfill$\etatonos$ \foo\\
-% \s\iotatonos\hfill$\iotatonos$ \foo\\
-% \s\omicrontonos\hfill$\omicrontonos$ \foo\\
-% \s\upsilontonos\hfill$\upsilontonos$ \foo\\
-% \s\omegatonos\hfill$\omegatonos$ \foo\\
-% \s\upsilondieresistonos\hfill$\upsilondieresistonos$ \foo\\
-% \s\iotadieresis\hfill$\iotadieresis$ \foo\\
-% \s\iotadieresistonos\hfill$\iotadieresistonos$ \foo\\
-% \s\upsilondieresis\hfill$\upsilondieresis$ \foo\\
-% \end{multicols}
-% \medskip
-\noindent\centeredline{%
+
+\centering
 \begin{tabular}{|lc|lc|lc|lc|}
 \hline
 \s\Alpha&$\Alpha$    &\s\Nu&$\Nu$          &\s\alpha&$\alpha$    &\s\nu&$\nu$\\
@@ -421,24 +522,16 @@ Here are the options recognized by the package:
 \s\Lambda&$\Lambda$  &\s\Psi&$\Psi$        &\s\lambda&$\lambda$  &\s\psi&$\psi$\\
 \s\Mu&$\Mu$          &\s\Omega&$\Omega$    &\s\mu&$\mu$          &\s\omega&$\omega$\\
 \hline
-\end{tabular}}
+\end{tabular}
 \medskip
-% il faut mettre le \columnbreak avant le \\ ...
-\begin{multicols}{3}\def\foo{\kern1cm}\raggedcolumns
-\s\varsigma\hfill$\varsigma$ \foo\\
-\s\varvarsigma\hfill$\varvarsigma$ \foo\\
-\s\sampi\hfill$\sampi$ \foo\\
-\s\digamma\hfill$\digamma$ \foo\\
-\s\koppa\hfill$\koppa$ \foo\columnbreak\\
-\s\varSigma\hfill$\varSigma$ \foo\\
-\s\Sampi\hfill$\Sampi$ \foo\\
-\s\Digamma\hfill$\Digamma$ \foo
-\par
-\end{multicols}
-% il y a bien sûr d'horribles espacement verticaux typiques de LaTeX
-\vspace*{-\baselineskip}
+
+\begin{tabular}{lclclc}
+\s\varsigma&$\varsigma$       & \s\digamma&$\digamma$ & \s\varSigma&$\varSigma$ \\
+\s\varvarsigma&$\varvarsigma$ & \s\koppa&$\koppa$     & \s\Sampi&$\Sampi$       \\
+\s\sampi&$\sampi$             &         &             & \s\Digamma&$\Digamma$
+\end{tabular}
 \caption{Greek letters, italic shapes, default family}
-%\label{table:italic}
+\label{table:italic}
 \MakeShortVerb\|
 \end{table}
 
@@ -469,9 +562,76 @@ Miscellaneous remarks:
   options originating from the \cs{usepackage} preamble declaration (or some
   options handed over via \cs{PassOptionsToPackage} or options passed to
   \cs{lgrmathsetup} in the preamble or body).
+\item In \autoref{table:upright} and \autoref{table:italic} we display the
+  glyphs from default font |lmr| which is made available to \LaTeX{} via
+  support files from the package \ctanpkg{cbfonts-fd}.%
+%
+  \footnote{Claudio~\textsc{Beccari}, \emph{\LaTeX{} font description files for the CB Greek fonts}, \url{https://ctan.org/pkg/cbfonts-fd}}
+%
+  The extra glyphs
+  shown underneath the framed box will not be available will all fonts.
 \end{enumerate}
 
+The \autoref{table:sample} displays verbatim a sample \LaTeX{} document you
+can use to test a given font family name.%
+%
+\footnote{As copying-pasting from PDF may give inconvenient result, depending
+  on viewer, this file is also provided as an attachment. À REVOIR}
+%
+In this particular case of testing
+|Alegreya-TLF|, we used |series=regular| after seeing Font Info messages in
+the |.log| file about the |m| series not being available and being substituted
+for by |regular|, so we used |regular| to avoid those messages.
 
+\begin{table}[htbp]
+\capstart
+\begin{snugshade}\def\MacroFont{\ttfamily\footnotesize}
+\begin{verbatim}
+\documentclass[11pt]{article}
+\usepackage{mlmodern}
+\usepackage{geometry}
+\usepackage[font=Alegreya-TLF,style=UP,series=regular]{lgrmath}
+
+\begin{document}\thispagestyle{empty}
+\begin{center}
+\let\s\string
+\ttfamily
+
+Testing Alegreya-TLF, style=UP, series=regular
+
+\begin{tabular}{|lc|lc|lc|lc|}
+\hline
+\s\Alpha&$\Alpha$    &\s\Nu&$\Nu$          &\s\alpha&$\alpha$    &\s\nu&$\nu$\\
+\s\Beta&$\Beta$      &\s\Xi&$\Xi$          &\s\beta&$\beta$      &\s\xi&$\xi$\\
+\s\Gamma&$\Gamma$    &\s\Omicron&$\Omicron$&\s\gamma&$\gamma$    &\s\omicron&$\omicron$\\
+\s\Delta&$\Delta$    &\s\Pi&$\Pi$          &\s\delta&$\delta$    &\s\pi&$\pi$\\
+\s\Epsilon&$\Epsilon$&\s\Rho&$\Rho$        &\s\epsilon&$\epsilon$&\s\rho&$\rho$\\
+\s\Zeta&$\Zeta$      &\s\Sigma&$\Sigma$    &\s\zeta&$\zeta$      &\s\sigma&$\sigma$\\
+\s\Eta&$\Eta$        &\s\Tau&$\Tau$        &\s\eta&$\eta$        &\s\tau&$\tau$\\
+\s\Theta&$\Theta$    &\s\Upsilon&$\Upsilon$&\s\theta&$\theta$    &\s\upsilon&$\upsilon$\\
+\s\Iota&$\Iota$      &\s\Phi&$\Phi$        &\s\iota&$\iota$      &\s\phi&$\phi$\\
+\s\Kappa&$\Kappa$    &\s\Chi&$\Chi$        &\s\kappa&$\kappa$    &\s\chi&$\chi$\\
+\s\Lambda&$\Lambda$  &\s\Psi&$\Psi$        &\s\lambda&$\lambda$  &\s\psi&$\psi$\\
+\s\Mu&$\Mu$          &\s\Omega&$\Omega$    &\s\mu&$\mu$          &\s\omega&$\omega$\\
+\hline
+\end{tabular}
+\medskip
+
+  \begin{tabular}{lclclc}
+\s\varsigma&$\varsigma$       & \s\digamma&$\digamma$ & \s\varSigma&$\varSigma$ \\
+\s\varvarsigma&$\varvarsigma$ & \s\koppa&$\koppa$     & \s\Sampi&$\Sampi$       \\
+\s\sampi&$\sampi$             &         &             & \s\Digamma&$\Digamma$
+  \end{tabular}
+
+\medskip
+Check log for "Missing character" in case of voids in above list.
+\end{center}
+\end{document}
+\end{verbatim}
+\end{snugshade}
+\caption{Sample \LaTeX{} document to test a font family name with \lgrmath}
+\label{table:sample}
+\end{table}
 
 \StopEventually{\end{document}\endinput}
 %\cleardoublepage
