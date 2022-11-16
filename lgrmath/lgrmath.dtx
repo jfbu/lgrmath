@@ -2,7 +2,7 @@
 % Execute etex on this file to extract package files.
 % See in README for more build instructions.
 %<*dtx>
-\def\dtxtimestamp {Time-stamp: <16-11-2022 at 11:06:28 CET>}
+\def\dtxtimestamp {Time-stamp: <16-11-2022 at 11:17:22 CET>}
 %%
 %% Package: lgrmath
 %% Greek in math mode via LGR font of one's choice (JFB)
@@ -104,7 +104,7 @@
 \else
 \documentclass {scrartcl}
 \fi
-\tracinglostchars=3
+\tracinglostchars=2
 
 % use doc with v2 because hyperref option clash with hypdoc
 % no time to read documentation now
@@ -572,6 +572,18 @@ Here are the commands defined by the package:
   package received the |alphabets| option.
 \item[\cs{lgrmathit}] This is a math alphabet.  It is defined only if the
   package received the |alphabets| option.
+
+\item[\cs{lgrmathgreektable}\marg{family}\marg{series}\marg{shape}] Produces a
+  tabular display of the Greek letters available with this font.  Here is for
+  example using%
+%
+  \centeredline{|\lgrmathgreektable{Alegreya-TLF}{regular}{n}|}
+%
+  We used |series=regular| after seeing Font Info messages in the |.log| file
+  about the |m| series not being available and being substituted for by
+  |regular|, so we used |regular| to avoid those messages.
+\item[\cs{lgrmathgreektableextra}\marg{family}\marg{series}\marg{shape}] 
+  Produces a tabular with additional glyphs.
 \end{description}
 
 Miscellaneous remarks:
@@ -582,70 +594,15 @@ Miscellaneous remarks:
   options originating from the \cs{usepackage} preamble declaration (or some
   options handed over via \cs{PassOptionsToPackage} or options passed to
   \cs{lgrmathsetup} in the preamble or body).
-\item The extra glyphs
-  shown underneath the framed box will not be available will all fonts.
+\item The ``extra glyphs'' will not be available will all fonts.  Here is for example
+  with |Alegreya-TLF|:
+
+  Adding |\tracinglostchars=3| will cause \TeX\ to raise an error in case such
+  missing characters are encountered.
 \end{enumerate}
 
-The \autoref{table:sample} displays verbatim a sample \LaTeX{} document you
-can use to test a given font family name.%
-%
-\footnote{As copying-pasting from PDF may give inconvenient result, depending
-  on viewer, this file is also provided as an attachment. À REVOIR}
-%
-In this particular case of testing
-|Alegreya-TLF|, we used |series=regular| after seeing Font Info messages in
-the |.log| file about the |m| series not being available and being substituted
-for by |regular|, so we used |regular| to avoid those messages.
-
-\begin{table}[htbp]
-\capstart
-\begin{snugshade}\def\MacroFont{\ttfamily\footnotesize}
-\begin{verbatim}
-\documentclass[11pt]{article}
-\usepackage{mlmodern}
-\usepackage{geometry}
-\usepackage[font=Alegreya-TLF,style=UP,series=regular]{lgrmath}
-
-\begin{document}\thispagestyle{empty}
-\begin{center}
-\let\s\string
-\ttfamily
-
-Testing Alegreya-TLF, style=UP, series=regular
-
-\begin{tabular}{|lc|lc|lc|lc|}
-\hline
-\s\Alpha&$\Alpha$    &\s\Nu&$\Nu$          &\s\alpha&$\alpha$    &\s\nu&$\nu$\\
-\s\Beta&$\Beta$      &\s\Xi&$\Xi$          &\s\beta&$\beta$      &\s\xi&$\xi$\\
-\s\Gamma&$\Gamma$    &\s\Omicron&$\Omicron$&\s\gamma&$\gamma$    &\s\omicron&$\omicron$\\
-\s\Delta&$\Delta$    &\s\Pi&$\Pi$          &\s\delta&$\delta$    &\s\pi&$\pi$\\
-\s\Epsilon&$\Epsilon$&\s\Rho&$\Rho$        &\s\epsilon&$\epsilon$&\s\rho&$\rho$\\
-\s\Zeta&$\Zeta$      &\s\Sigma&$\Sigma$    &\s\zeta&$\zeta$      &\s\sigma&$\sigma$\\
-\s\Eta&$\Eta$        &\s\Tau&$\Tau$        &\s\eta&$\eta$        &\s\tau&$\tau$\\
-\s\Theta&$\Theta$    &\s\Upsilon&$\Upsilon$&\s\theta&$\theta$    &\s\upsilon&$\upsilon$\\
-\s\Iota&$\Iota$      &\s\Phi&$\Phi$        &\s\iota&$\iota$      &\s\phi&$\phi$\\
-\s\Kappa&$\Kappa$    &\s\Chi&$\Chi$        &\s\kappa&$\kappa$    &\s\chi&$\chi$\\
-\s\Lambda&$\Lambda$  &\s\Psi&$\Psi$        &\s\lambda&$\lambda$  &\s\psi&$\psi$\\
-\s\Mu&$\Mu$          &\s\Omega&$\Omega$    &\s\mu&$\mu$          &\s\omega&$\omega$\\
-\hline
-\end{tabular}
-\medskip
-
-  \begin{tabular}{lclclc}
-\s\varsigma&$\varsigma$       & \s\digamma&$\digamma$ & \s\varSigma&$\varSigma$ \\
-\s\varvarsigma&$\varvarsigma$ & \s\koppa&$\koppa$     & \s\Sampi&$\Sampi$       \\
-\s\sampi&$\sampi$             &         &             & \s\Digamma&$\Digamma$
-  \end{tabular}
-
-\medskip
-Check log for "Missing character" in case of voids in above list.
-\end{center}
-\end{document}
-\end{verbatim}
-\end{snugshade}
-\caption{Sample \LaTeX{} document to test a font family name with \lgrmath}
-\label{table:sample}
-\end{table}
+This is the end of the user documentation.  The next section is a code listing
+with some comments for the advanced users.
 
 \StopEventually{\end{document}\endinput}
 %\cleardoublepage
