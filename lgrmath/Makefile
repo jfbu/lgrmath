@@ -18,7 +18,7 @@ clean:
 doc: $(docfiles)
 	@echo 'make doc done.'
 
-lgrmath.pdf: lgrmath.dtx lgrmath.tex Makefile
+lgrmath.pdf: $(extracted) Makefile
 	$(latexmk_cmd) lgrmath
 ifdef shell_has_xattr
 	xattr -c lgrmath.pdf
