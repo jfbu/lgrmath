@@ -2,7 +2,7 @@
 % Execute etex on this file to extract package files.
 % See in README for more build instructions.
 %<*dtx>
-\def\dtxtimestamp {Time-stamp: <16-11-2022 at 15:12:59 CET>}
+\def\dtxtimestamp {Time-stamp: <16-11-2022 at 15:26:20 CET>}
 %%
 %% Package: lgrmath
 %% Greek in math mode via LGR font of one's choice (JFB)
@@ -1195,9 +1195,6 @@ with some comments for the advanced users.
 \lgrmath@setgreekcs
 %    \end{macrocode}
 % Finally we define \cs{lgrmathgreektable} and \cs{lgrmathgreektableextra}.
-% It would arguably be neater to code this using Latin letters in place of the
-% \cs{char}'s but I had this ready from |libgreek.dtx| and it is important in
-% life to optimize time allocations.
 %    \begin{macrocode}
 \def\lgrmathgreektable#1#2#3{%
 \begingroup
@@ -1206,18 +1203,18 @@ with some comments for the advanced users.
 \usefont{LGR}{#1}{#2}{#3}%
 \begin{tabular}{|lc|lc|lc|lc|}
 \hline
-\s\Alpha&\char65   &\s\Nu&\char78      &\s\alpha&\char97    &\s\nu&\char110 \\
-\s\Beta&\char66    &\s\Xi&\char88      &\s\beta&\char98     &\s\xi&\char120 \\
-\s\Gamma&\char71   &\s\Omicron&\char79 &\s\gamma&\char103   &\s\omicron&\char111 \\
-\s\Delta&\char68   &\s\Pi&\char80      &\s\delta&\char100   &\s\pi&\char112 \\
-\s\Epsilon&\char69 &\s\Rho&\char82     &\s\epsilon&\char101 &\s\rho&\char114 \\
-\s\Zeta&\char90    &\s\Sigma&\char83   &\s\zeta&\char122    &\s\sigma&\char115 \\
-\s\Eta&\char72     &\s\Tau&\char84     &\s\eta&\char104     &\s\tau&\char116 \\
-\s\Theta&\char74   &\s\Upsilon&\char85 &\s\theta&\char106   &\s\upsilon&\char117 \\
-\s\Iota&\char73    &\s\Phi&\char70     &\s\iota&\char105    &\s\phi&\char102 \\
-\s\Kappa&\char75   &\s\Chi&\char81     &\s\kappa&\char107   &\s\chi&\char113 \\
-\s\Lambda&\char76  &\s\Psi&\char89     &\s\lambda&\char108  &\s\psi&\char121 \\
-\s\Mu&\char77      &\s\Omega&\char87   &\s\mu&\char109      &\s\omega&\char119 \\
+\s\Alpha  &A &\s\Nu     &N &\s\alpha  &a &\s\nu     &n \\
+\s\Beta   &B &\s\Xi     &X &\s\beta   &b &\s\xi     &x \\
+\s\Gamma  &G &\s\Omicron&O &\s\gamma  &g &\s\omicron&o \\
+\s\Delta  &D &\s\Pi     &P &\s\delta  &d &\s\pi     &p \\
+\s\Epsilon&E &\s\Rho    &R &\s\epsilon&e &\s\rho    &r \\
+\s\Zeta   &Z &\s\Sigma  &S &\s\zeta   &z &\s\sigma  &s \\
+\s\Eta    &H &\s\Tau    &T &\s\eta    &h &\s\tau    &t \\
+\s\Theta  &J &\s\Upsilon&U &\s\theta  &j &\s\upsilon&u \\
+\s\Iota   &I &\s\Phi    &F &\s\iota   &i &\s\phi    &f \\
+\s\Kappa  &K &\s\Chi    &Q &\s\kappa  &k &\s\chi    &q \\
+\s\Lambda &L &\s\Psi    &Y &\s\lambda &l &\s\psi    &y \\
+\s\Mu     &M &\s\Omega  &W &\s\mu     &m &\s\omega  &w \\
 \hline
 \end{tabular}
 \endgroup
@@ -1228,9 +1225,9 @@ with some comments for the advanced users.
 \def\s##1{{\usefont{T1}{mlmtt}{m}{n}\string##1}}%
 \usefont{LGR}{#1}{#2}{#3}%
 \begin{tabular}{lclclc}
-\s\varsigma&\char99   &\s\digamma&\char147 &\s\varSigma&\char22 \\
-\s\varvarsigma&\char6 &\s\koppa&\char18    &\s\Sampi&\char23    \\
-\s\sampi&\char27      &        &           &\s\Digamma&\char195   
+\s\varsigma   &\char99   &\s\digamma&\char147 &\s\varSigma&\char22 \\
+\s\varvarsigma&\char6    &\s\koppa  &\char18  &\s\Sampi   &\char23 \\
+\s\sampi      &\char27   &          &         &\s\Digamma &\char195\relax
 \end{tabular}
 \endgroup
 }%
