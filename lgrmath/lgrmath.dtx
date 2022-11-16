@@ -2,7 +2,7 @@
 % Execute etex on this file to extract package files.
 % See in README for more build instructions.
 %<*dtx>
-\def\dtxtimestamp {Time-stamp: <16-11-2022 at 15:34:04 CET>}
+\def\dtxtimestamp {Time-stamp: <16-11-2022 at 15:48:35 CET>}
 %%
 %% Package: lgrmath
 %% Greek in math mode via LGR font of one's choice (JFB)
@@ -594,7 +594,7 @@ Here are the commands defined by the package:
   \centeredline{\lgrmathgreektable{Alegreya-TLF}{regular}{n}}
 
   We used |regular|
-  for the \marg{series} mandatory argument after seeing Font Info messages in
+  for the \meta{series} mandatory argument after seeing Font Info messages in
   the |.log| file about the |m| series not being available and being
   substituted for by |regular|, so we used |regular| to avoid those messages.
 \item[\cs{lgrmathgreektableextra}\marg{family}\marg{series}\marg{shape}] 
@@ -618,11 +618,15 @@ Miscellaneous remarks:
   options originating from the \cs{usepackage} preamble declaration (or some
   options handed over via \cs{PassOptionsToPackage} or options passed to
   \cs{lgrmathsetup} in the preamble or body).
-\item The ``extra glyphs'' will not be available will all fonts.  Here is for example
-  with |Alegreya-TLF|:
-\centeredline{\lgrmathgreektableextra{Alegreya-TLF}{regular}{n}}
-  Adding |\tracinglostchars=3| will cause \TeX\ to raise an error in case such
-  missing characters are encountered.
+\item The \ctanpkg{libgreek} package also defines \cs{mathchar}'s mapping to
+  some lowercase Greek letters with diacritics, but for time being it has been
+  decided that \lgrmath would restrict its definitions to the 24+24 base glyphs
+  and 8 ``extra'' ones for which there are slots in the LGR encoding table.
+\item These 8 ``extra glyphs'' will not always be available, depending on the
+  font.  Here is for example with |Alegreya-TLF|:
+  \centeredline{\lgrmathgreektableextra{Alegreya-TLF}{regular}{n}} Adding
+  |\tracinglostchars=3| will cause \TeX\ to raise an error in case such missing
+  characters are encountered.
 \end{enumerate}
 
 This is the end of the user documentation.  The next section is a code listing
