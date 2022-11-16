@@ -2,7 +2,7 @@
 % Execute etex on this file to extract package files.
 % See in README for more build instructions.
 %<*dtx>
-\def\dtxtimestamp {Time-stamp: <16-11-2022 at 11:17:22 CET>}
+\def\dtxtimestamp {Time-stamp: <16-11-2022 at 11:44:21 CET>}
 %%
 %% Package: lgrmath
 %% Greek in math mode via LGR font of one's choice (JFB)
@@ -579,11 +579,21 @@ Here are the commands defined by the package:
 %
   \centeredline{|\lgrmathgreektable{Alegreya-TLF}{regular}{n}|}
 %
+  \centeredline{\lgrmathgreektable{Alegreya-TLF}{regular}{n}}
   We used |series=regular| after seeing Font Info messages in the |.log| file
   about the |m| series not being available and being substituted for by
   |regular|, so we used |regular| to avoid those messages.
 \item[\cs{lgrmathgreektableextra}\marg{family}\marg{series}\marg{shape}] 
-  Produces a tabular with additional glyphs.
+  Produces a tabular with additional glyphs.  Here is an example, using
+%
+  \centeredline{|\lgrmathgreektableextra{LibertinusSans-TLF}{m}{n}|}
+%
+  \centeredline{\lgrmathgreektableextra{LibertinusSans-TLF}{m}{n}} Beware that if
+  we had forgotten the |-TLF| suffix, the font would have been substituted in
+  favour of fall-back |lmr| by \LaTeX.  Always check log for font substitutions
+  messages...
+
+  And see also third remark next.
 \end{description}
 
 Miscellaneous remarks:
@@ -596,7 +606,7 @@ Miscellaneous remarks:
   \cs{lgrmathsetup} in the preamble or body).
 \item The ``extra glyphs'' will not be available will all fonts.  Here is for example
   with |Alegreya-TLF|:
-
+\centeredline{\lgrmathgreektableextra{Alegreya-TLF}{regular}{n}}
   Adding |\tracinglostchars=3| will cause \TeX\ to raise an error in case such
   missing characters are encountered.
 \end{enumerate}
@@ -605,7 +615,8 @@ This is the end of the user documentation.  The next section is a code listing
 with some comments for the advanced users.
 
 \StopEventually{\end{document}\endinput}
-%\cleardoublepage
+
+\cleardoublepage
 %\newgeometry{hmarginratio=3:2}
 \small
 
@@ -1168,6 +1179,47 @@ with some comments for the advanced users.
     \fi
 }%
 \lgrmath@setgreekcs
+%    \end{macrocode}
+% Finally we define \cs{lgrmathgreektable} and \cs{lgrmathgreektableextra}.
+% It would arguably be neater to code this using Latin letters in place of the
+% \cs{char}'s but I had this ready from |libgreek.dtx| and it is important in
+% life to optimize time allocations.
+%    \begin{macrocode}
+\def\lgrmathgreektable#1#2#3{%
+\begingroup
+% ah que TeX est mieux avec tt
+\def\s##1{{\usefont{T1}{mlmtt}{m}{n}\string##1}}%
+\usefont{LGR}{#1}{#2}{#3}%
+\begin{tabular}{|lc|lc|lc|lc|}
+\hline
+\s\Alpha&\char65   &\s\Nu&\char78      &\s\alpha&\char97    &\s\nu&\char110 \\
+\s\Beta&\char66    &\s\Xi&\char88      &\s\beta&\char98     &\s\xi&\char120 \\
+\s\Gamma&\char71   &\s\Omicron&\char79 &\s\gamma&\char103   &\s\omicron&\char111 \\
+\s\Delta&\char68   &\s\Pi&\char80      &\s\delta&\char100   &\s\pi&\char112 \\
+\s\Epsilon&\char69 &\s\Rho&\char82     &\s\epsilon&\char101 &\s\rho&\char114 \\
+\s\Zeta&\char90    &\s\Sigma&\char83   &\s\zeta&\char122    &\s\sigma&\char115 \\
+\s\Eta&\char72     &\s\Tau&\char84     &\s\eta&\char104     &\s\tau&\char116 \\
+\s\Theta&\char74   &\s\Upsilon&\char85 &\s\theta&\char106   &\s\upsilon&\char117 \\
+\s\Iota&\char73    &\s\Phi&\char70     &\s\iota&\char105    &\s\phi&\char102 \\
+\s\Kappa&\char75   &\s\Chi&\char81     &\s\kappa&\char107   &\s\chi&\char113 \\
+\s\Lambda&\char76  &\s\Psi&\char89     &\s\lambda&\char108  &\s\psi&\char121 \\
+\s\Mu&\char77      &\s\Omega&\char87   &\s\mu&\char109      &\s\omega&\char119 \\
+\hline
+\end{tabular}
+\endgroup
+}%
+\def\lgrmathgreektableextra#1#2#3{%
+\begingroup
+% ah que TeX est mieux avec tt
+\def\s##1{{\usefont{T1}{mlmtt}{m}{n}\string##1}}%
+\usefont{LGR}{#1}{#2}{#3}%
+\begin{tabular}{lclclc}
+\s\varsigma&\char99   &\s\digamma&\char147 &\s\varSigma&\char22 \\
+\s\varvarsigma&\char6 &\s\koppa&\char18    &\s\Sampi&\char23    \\
+\s\sampi&\char27      &        &           &\s\Digamma&\char195   
+\end{tabular}
+\endgroup
+}%
 %    \end{macrocode}
 % And we have now reached the end of the \lgrmath package code.  The actual
 % |.sty| file will contain an \cs{endinput} added by the DocStrip extraction.
