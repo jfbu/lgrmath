@@ -16,7 +16,4 @@ auto
 ctanbuild/*
 !ctanbuild/private.sh
 !ctanbuild/makepdf.sh
-CTAN/*
-!CTAN/ANNOUNCES
 !CTAN/*.zip
-

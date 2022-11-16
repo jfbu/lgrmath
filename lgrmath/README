@@ -20,7 +20,7 @@
     This Work includes lgrmath.sty, the documentation
     lgrmath.pdf, this README and the source lgrmath.dtx.
 
-With \usepackage[font=<...>]{lgrmath} the Greek letters in math
+With \usepackage[font=<name>]{lgrmath} the Greek letters in math
 mode will be from the given font name, assumed to exist on the
 LaTeX installation in LGR encoding for traditional LaTeX/pdfLaTeX.
 

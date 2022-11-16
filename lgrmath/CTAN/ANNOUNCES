@@ -1,1 +1,21 @@
-<to be completed>
+Announce:
+
+1.0 2022/11/16
+
+<same text as Description>
+
+Description:
+
+The lgrmath package is a LaTeX package which sets the Greek
+letters in math mode to use glyphs from the LGR-encoded font of
+one’s choice.  The documentation includes a rather extensive list
+of the available font family names on typical LaTeX installations.
+
+The package allows to easily configure math mode to use either
+upright or italic/slanted shapes, and all Greek letters are always
+available also via \...up and \...it named macros (what `up' and
+`it' mean is configured by package options).  Typically, this
+package is for users who have already modified Latin letters in
+math mode, e.g. via package frenchmath or mathastext, and who wish
+to match them with some suitable font for Greek symbols.
+
