@@ -2,7 +2,7 @@
 % Execute etex on this file to extract package files.
 % See in README for more build instructions.
 %<*dtx>
-\def\dtxtimestamp {Time-stamp: <16-11-2022 at 15:48:35 CET>}
+\def\dtxtimestamp {Time-stamp: <16-11-2022 at 21:29:30 CET>}
 %%
 %% Package: lgrmath
 %% Greek in math mode via LGR font of one's choice (JFB)
@@ -386,7 +386,7 @@ in directory  /usr/local/texlive/2022/texmf-dist/tex/latex we execute
     find . -name 'LGR*fd'
 and then rearrange somewhat the output to put it in alphabetical order,
 and gain some space horizontally so as to obtain a two-column display
-Naturally in many instances the variaous -TLF, -OsF, and so on, refer
+Naturally in many instances the various -TLF, -OsF, and so on, refer
 to options of digit characters and have no impact on the Greek letters,
 nevertheless I kept all filenames, just pick one, drop LGR and .fd parts.
 
@@ -607,7 +607,7 @@ Here are the commands defined by the package:
   favour of fall-back |lmr| by \LaTeX.  Always check log for font substitutions
   messages...
 
-  And see also third remark next.
+  And see also the last remark below.
 \end{description}
 
 Miscellaneous remarks:
@@ -618,10 +618,10 @@ Miscellaneous remarks:
   options originating from the \cs{usepackage} preamble declaration (or some
   options handed over via \cs{PassOptionsToPackage} or options passed to
   \cs{lgrmathsetup} in the preamble or body).
-\item The \ctanpkg{libgreek} package also defines \cs{mathchar}'s mapping to
-  some lowercase Greek letters with diacritics, but for time being it has been
+\item The \ctanpkg{libgreek} package defines \cs{mathchar}'s mapping to
+  lowercase Greek letters with diacritics, but for time being it has been
   decided that \lgrmath would restrict its definitions to the 24+24 base glyphs
-  and 8 ``extra'' ones for which there are slots in the LGR encoding table.
+  and the 8 ``extra'' ones for which there are slots in the LGR encoding table.
 \item These 8 ``extra glyphs'' will not always be available, depending on the
   font.  Here is for example with |Alegreya-TLF|:
   \centeredline{\lgrmathgreektableextra{Alegreya-TLF}{regular}{n}} Adding
@@ -668,7 +668,7 @@ with some comments for the advanced users.
 %    \begin{macrocode}
 \RequirePackage{kvoptions}
 %    \end{macrocode}
-% To minimize the author's task, we keep close to libgreek.sty code with minimal
+% To minimize the author's task, we keep close to |libgreek.sty| code with minimal
 % adaptations.  In particular I decided to keep the fact that |style| option
 % makes the |Greek| and |greek| options ignored.  But there are some
 % complications originating in the addition of the \cs{lgrmathsetup}, which
@@ -698,16 +698,14 @@ with some comments for the advanced users.
 % We use the \ctanpkg{keyval} interface mostly to not have to rework
 % everything, if at all possible, into the \ctanpkg{kvoptions} declarative
 % interface.  It is a very good thing that the latter package can be used
-% without forcing on the user its own declarative interface... however this
-% means that inputs such as |serif=false| do not generate errors but are
-% handled exactly the same as |serif=true|...
+% without forcing on the user its own declarative interface...
 %    \begin{macrocode}
 \define@key{lgrmath}{font}[lmr]{\def\lgrmath@fontfamily{#1}}
 \define@key{lgrmath}{upshape}{\edef\lgrmath@upshape{#1}}
 \define@key{lgrmath}{itshape}{\edef\lgrmath@itshape{#1}}
 %    \end{macrocode}
-% Compared to |libgreek| I decide to use \cs{lowercase} and allow more variety
-% in the input.
+% Compared to |libgreek 1.1| I decide to use \cs{lowercase} and allow |UP| as
+% alias of |French|.
 %    \begin{macrocode}
 \define@key{lgrmath}{style}{%
    \edef\lgrmath@style{#1}%
@@ -725,7 +723,7 @@ with some comments for the advanced users.
 \define@key{lgrmath}{series}{\edef\lgrmath@series{#1}}
 \define@key{lgrmath}{boldseries}{\edef\lgrmath@boldseries{#1}}
 %    \end{macrocode}
-% The single truly Boolean option...
+% The single Boolean option, a true one as it uses \ctanpkg{kvoptions} interface.
 %    \begin{macrocode}
 \DeclareBoolOption[false]{alphabets}
 %    \end{macrocode}
@@ -862,21 +860,21 @@ with some comments for the advanced users.
 % deciding whether to use |LibertinusSerif-TLF| or |LibertinusSans-TLF| for
 % reasons now escaping me.  I vaguely remember it was useful at some point
 % during development.  Ah yes, now I remember this separation was for the
-% handling of the |scale| option.  And we havn't one here.
+% handling of the |scale| option.  And we haven't one here.
 %    \begin{macrocode}
 \DeclareFontEncoding{LGR}{}{}
 \DeclareSymbolFont{lgrmathup}{LGR}{\lgrmath@fontfamily}
-                                   {\lgrmath@series}
-                                   {\lgrmath@upshape}
+                                  {\lgrmath@series}
+                                  {\lgrmath@upshape}
 \SetSymbolFont{lgrmathup}{bold}{LGR}{\lgrmath@fontfamily}
-                                     {\lgrmath@boldseries}
-                                     {\lgrmath@upshape}
+                                    {\lgrmath@boldseries}
+                                    {\lgrmath@upshape}
 \DeclareSymbolFont{lgrmathit}{LGR}{\lgrmath@fontfamily}
-                                   {\lgrmath@series}
-                                   {\lgrmath@itshape}
+                                  {\lgrmath@series}
+                                  {\lgrmath@itshape}
 \SetSymbolFont{lgrmathit}{bold}{LGR}{\lgrmath@fontfamily}
-                                     {\lgrmath@boldseries}
-                                     {\lgrmath@itshape}
+                                    {\lgrmath@boldseries}
+                                    {\lgrmath@itshape}
 %    \end{macrocode}
 % As all Greek letters are already available in \cs{...up} and \cs{...it}
 % variants, it is indeed not immediately pressing to have math alphabets, so
@@ -888,7 +886,7 @@ with some comments for the advanced users.
 \fi
 %    \end{macrocode}
 % Definition of the `|up|' \cs{mathchar}'s.  There are 48 `standard'
-% ones plus 8 extras and 11 with diacritics for a total of 67 ones.
+% ones plus 8 extras.^^A and 11 with diacritics for a total of 67 ones.
 %
 % Hesitation whether I should declare with \cs{mathalpha} \emph{only} if
 % |alphabets| is passed to the package.
@@ -993,7 +991,7 @@ with some comments for the advanced users.
 \DeclareMathSymbol{\psiit}{\mathalpha}{lgrmathit}{121}
 \DeclareMathSymbol{\omegait}{\mathalpha}{lgrmathit}{119}
 %    \end{macrocode}
-% Alternate shapes and other glyphs.
+% Extras: alternate shapes and other glyphs, `upright'.
 %    \begin{macrocode}
 \DeclareMathSymbol{\varsigmaup}{\mathalpha}{lgrmathup}{99}
 \DeclareMathSymbol{\varvarsigmaup}{\mathalpha}{lgrmathup}{6}
@@ -1003,6 +1001,9 @@ with some comments for the advanced users.
 \DeclareMathSymbol{\digammaup}{\mathalpha}{lgrmathup}{147}
 \DeclareMathSymbol{\Digammaup}{\mathalpha}{lgrmathup}{195}
 \DeclareMathSymbol{\koppaup}{\mathalpha}{lgrmathup}{18}
+%    \end{macrocode}
+% Extras: alternate shapes and other glyphs, `italic'.
+%    \begin{macrocode}
 \DeclareMathSymbol{\varsigmait}{\mathalpha}{lgrmathit}{99}
 \DeclareMathSymbol{\varvarsigmait}{\mathalpha}{lgrmathit}{6}
 \DeclareMathSymbol{\varSigmait}{\mathalpha}{lgrmathit}{22}
@@ -1013,11 +1014,12 @@ with some comments for the advanced users.
 \DeclareMathSymbol{\koppait}{\mathalpha}{lgrmathit}{18}
 %    \end{macrocode}
 % Some glyphs with diacritics.  I decided not to keep this
-% in package.  Let's wait for extremely improbable feature request, as I won't
+% in \lgrmath.  Let's wait for extremely improbable feature request, as I won't
 % do the feature request and will probably remain the sole user.  Actually I
-% don't think I will ever use this package as I context I may think of where
+% don't think I will ever use this package as contexts where
 % it could be useful are those where I would use \ctanpkg{mathastext} and its
 % |LGRgreek| option and \cs{MTgreekfont} command...
+% \makeatletter\codeline@indexfalse
 %    \begin{macrocode}
 % \DeclareMathSymbol{\alphatonosup}{\mathalpha}{lgrmathup}{136}
 % \DeclareMathSymbol{\epsilontonosup}{\mathalpha}{lgrmathup}{232}
@@ -1042,8 +1044,9 @@ with some comments for the advanced users.
 % \DeclareMathSymbol{\iotadieresistonosit}{\mathalpha}{lgrmathit}{242}
 % \DeclareMathSymbol{\upsilondieresisit}{\mathalpha}{lgrmathit}{244}
 %    \end{macrocode}
-% Definition of the \cs{mathchar}'s without `|up/it|' postfix. There are 27
-% uppercase and 40 lowercase letters, for a total of 67 glyphs.  Actually,
+% \codeline@indextrue
+% Definition of the \cs{mathchar}'s without `|up/it|' postfix. There are 27=24+3
+% uppercase and 29=24+5 lowercase letters, for a total of 56=48+8 glyphs.  Actually,
 % I had done some work with LGR in September 2011.  I kept
 % the file around.  But
 % at no point did I go back to check if I had done exhaustive work in 2011 and
@@ -1142,6 +1145,13 @@ with some comments for the advanced users.
        \let\sampi\sampiup
        \let\digamma\digammaup
        \let\koppa\koppaup
+%    \end{macrocode}
+% The \ctanpkg{doc} |macrocode| makes no provision for being interrupted
+% invisibly, it is very complicated (but possible) to do this (see
+% \centeredline{\url{https://github.com/latex3/latex2e/issues/847}}
+% ), but simplest is to babble something here like this paragraph.
+% \codeline@indexfalse
+%    \begin{macrocode}
 % \let\alphatonos\alphatonosup
 % \let\epsilontonos\epsilontonosup
 % \let\etatonos\etatonosup
@@ -1153,6 +1163,9 @@ with some comments for the advanced users.
 % \let\iotadieresis\iotadieresisup
 % \let\iotadieresistonos\iotadieresistonosup
 % \let\upsilondieresis\upsilondieresisup
+%    \end{macrocode}
+% babble\codeline@indextrue
+%    \begin{macrocode}
     \else
        \let\alpha\alphait
        \let\beta\betait
@@ -1183,6 +1196,9 @@ with some comments for the advanced users.
        \let\sampi\sampiit
        \let\digamma\digammait
        \let\koppa\koppait
+%    \end{macrocode}
+% babble\codeline@indexfalse
+%    \begin{macrocode}
 % \let\alphatonos\alphatonosit
 % \let\epsilontonos\epsilontonosit
 % \let\etatonos\etatonosit
@@ -1194,6 +1210,9 @@ with some comments for the advanced users.
 % \let\iotadieresis\iotadieresisit
 % \let\iotadieresistonos\iotadieresistonosit
 % \let\upsilondieresis\upsilondieresisit
+%    \end{macrocode}
+% babble\codeline@indextrue
+%    \begin{macrocode}
     \fi
 }%
 \lgrmath@setgreekcs
@@ -1202,7 +1221,6 @@ with some comments for the advanced users.
 %    \begin{macrocode}
 \def\lgrmathgreektable#1#2#3{%
 \begingroup
-% ah que TeX est mieux avec tt
 \def\s##1{{\usefont{T1}{mlmtt}{m}{n}\string##1}}%
 \usefont{LGR}{#1}{#2}{#3}%
 \begin{tabular}{|lc|lc|lc|lc|}
@@ -1225,7 +1243,6 @@ with some comments for the advanced users.
 }%
 \def\lgrmathgreektableextra#1#2#3{%
 \begingroup
-% ah que TeX est mieux avec tt
 \def\s##1{{\usefont{T1}{mlmtt}{m}{n}\string##1}}%
 \usefont{LGR}{#1}{#2}{#3}%
 \begin{tabular}{lclclc}
