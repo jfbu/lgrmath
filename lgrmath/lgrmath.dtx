@@ -2,7 +2,7 @@
 % Execute etex on this file to extract package files.
 % See in README for more build instructions.
 %<*dtx>
-\def\dtxtimestamp {Time-stamp: <16-11-2022 at 11:44:21 CET>}
+\def\dtxtimestamp {Time-stamp: <16-11-2022 at 15:12:59 CET>}
 %%
 %% Package: lgrmath
 %% Greek in math mode via LGR font of one's choice (JFB)
@@ -228,21 +228,34 @@ pdfpagemode=UseNone,%
 The \lgrmath package sets the Greek letters {in math mode} (\textbf{only}) to use glyphs
 from the LGR-encoded font of one's choice.
 
-Thus \lgrmath is for people who want \emph{only} to adjust Greek letters in math
-mode (and easily configure usage of upright or italic/slanted shapes), perhaps
-in the context of having changed Latin letters as well, e.g.\@ from using the
-\ctanpkg{mathastext} or the \ctanpkg{frenchmath} packages.
+Thus \lgrmath is for people who want \emph{only} to adjust Greek letters in
+math mode (and easily configure usage of upright or italic/slanted shapes),
+perhaps in the context of having changed Latin letters as well, e.g.\@ from
+using the \ctanpkg{frenchmath}%
+%
+\footnote{Antoine \textsc{Missier}, \emph{Typesetting mathematics according to French rules}, \url{https://ctan.org/pkg/frenchmath}.}
+%
+package which makes uppercase Latin letters in
+math mode render upright, among quite a few other adjustments tailored for
+French mathematical typesetting, or the \ctanpkg{mathastext}%
+%
+\footnote{Verfasser, \emph{Use the text font in math mode}, \url{https://ctan.org/pkg/mathastext}.}
+%
+package.
+Actually \lgrmath is in part inspired from this latter package |LGRgreek|
+option and \cs{MTgreekfont} command.  But \lgrmath currently does not
+incorporate a mechanism for defining and using multiple math versions, each one
+with its own font for Greek letters, as is already provided by
+\ctanpkg{mathastext}.
 
-Actually it is very analogous to the functionality provided by the |LGRgreek|
-option and \cs{MTgreekfont} command of \ctanpkg{mathastext}, also by the
-author.  But it currently does not incorporate a mechanism for defining and
-using multiple math versions, each one with its own font for Greek letters, as
-provided by \ctanpkg{mathastext}.
-
-The package is also related to \ctanpkg{libgreek}, also by the author, and
-shares most of its codebase, dropping matters of |libgreek-legacy| and adding
-the flexibility to change the font family in use.
-
+The package is also related to \ctanpkg{libgreek}%
+%
+\footnote{Verfasser, \emph{Greek letters in math mode from Libertinus or Linux
+    Libertine/Biolinum}, \url{https://ctan.org/pkg/libgreek}.},
+%
+also by the author, and shares most of its codebase, after dropping matters
+related to |libgreek-legacy|, and the |scale| option which can not be
+implemented generically.
 
 The Greek letters all come with \cs{...up} and \cs{...it} named variants, and
 whether ``bare'' control sequences map to the `|up|' or `|it|' ones can be
@@ -370,7 +383,7 @@ Here are the options recognized by the package:
 \catcode\string`\`12 \catcode`\' 12
 \begin{verbatim}
 in directory  /usr/local/texlive/2022/texmf-dist/tex/latex we execute
-$ find . -name 'LGR*fd'
+    find . -name 'LGR*fd'
 and then rearrange somewhat the output to put it in alphabetical order,
 and gain some space horizontally so as to obtain a two-column display
 Naturally in many instances the variaous -TLF, -OsF, and so on, refer
@@ -461,9 +474,8 @@ nevertheless I kept all filenames, just pick one, drop LGR and .fd parts.
     LGRLibertinusSerif-OsF.fd      LGRLibertinusSerifDisplay-TOsF.fd
     LGRLibertinusSerif-Sup.fd      LGRLibertinusSerifInitials-TLF.fd
 
-And now for more, with lowercase `lgr' filenames:
+And now for more, with lowercase `lgr' filenames: find . -name 'lgr*fd'
 
-$ find . -name 'lgr*fd'
 ./txfontsb/lgrtxr.fd                     ./cm-lgc/lgrfcm.fd
 ./txfontsb/lgrtxrc.fd                    ./cm-lgc/lgrfct.fd
 ./txfontsb/lgrtxry.fd                    ./cm-lgc/lgrfcs.fd
@@ -580,11 +592,13 @@ Here are the commands defined by the package:
   \centeredline{|\lgrmathgreektable{Alegreya-TLF}{regular}{n}|}
 %
   \centeredline{\lgrmathgreektable{Alegreya-TLF}{regular}{n}}
-  We used |series=regular| after seeing Font Info messages in the |.log| file
-  about the |m| series not being available and being substituted for by
-  |regular|, so we used |regular| to avoid those messages.
+
+  We used |regular|
+  for the \marg{series} mandatory argument after seeing Font Info messages in
+  the |.log| file about the |m| series not being available and being
+  substituted for by |regular|, so we used |regular| to avoid those messages.
 \item[\cs{lgrmathgreektableextra}\marg{family}\marg{series}\marg{shape}] 
-  Produces a tabular with additional glyphs.  Here is an example, using
+  Produces a tabular with eight additional glyphs.  Here is an example, using
 %
   \centeredline{|\lgrmathgreektableextra{LibertinusSans-TLF}{m}{n}|}
 %
