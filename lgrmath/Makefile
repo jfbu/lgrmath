@@ -34,7 +34,7 @@ lgrmath.zip: $(docfiles) $(sourcefiles) $(texfiles) Makefile \
 	rm -f                 ctanbuild/lgrmath.zip
 	mkdir -p              ctanbuild/lgrmath
 	chmod ugo+rwx         ctanbuild/lgrmath
-	cp -a $(docfiles)     ctanbuild/
+	cp -a README          ctanbuild/
 	cp -a $(sourcefiles)  ctanbuild/
 	cd ctanbuild && ./private.sh && ./makepdf.sh
 	cd ctanbuild && mv $(docfiles) $(sourcefiles) lgrmath/
