@@ -2,7 +2,7 @@
 % Execute etex on this file to extract package files.
 % See in README for more build instructions.
 %<*dtx>
-\def\dtxtimestamp {Time-stamp: <16-11-2022 at 10:47:52 CET>}
+\def\dtxtimestamp {Time-stamp: <16-11-2022 at 11:06:28 CET>}
 %%
 %% Package: lgrmath
 %% Greek in math mode via LGR font of one's choice (JFB)
@@ -200,7 +200,7 @@ pdfpagemode=UseNone,%
 }
 \pdfstringdefDisableCommands{\def\lgrmath{lgrmath\xspace}}
 
-
+\usepackage{centeredline}
 \usepackage{lgrmath}
 
 \begin{document}\renewcommand\familydefault\sfdefault
@@ -255,22 +255,114 @@ package loading time.
 
 \section{Options of the \lgrmath package}
 
+\begin{table}[htbp]
+\capstart
+\DeleteShortVerb\|% a effet global !
+\let\s\string
+\ttfamily
+\lgrmathsetup{style=fReNcH}% testing lowercasing works
+
+\centering
+
+\begin{tabular}{|lc|lc|lc|lc|}
+\hline
+\s\Alpha&$\Alpha$    &\s\Nu&$\Nu$          &\s\alpha&$\alpha$    &\s\nu&$\nu$\\
+\s\Beta&$\Beta$      &\s\Xi&$\Xi$          &\s\beta&$\beta$      &\s\xi&$\xi$\\
+\s\Gamma&$\Gamma$    &\s\Omicron&$\Omicron$&\s\gamma&$\gamma$    &\s\omicron&$\omicron$\\
+\s\Delta&$\Delta$    &\s\Pi&$\Pi$          &\s\delta&$\delta$    &\s\pi&$\pi$\\
+\s\Epsilon&$\Epsilon$&\s\Rho&$\Rho$        &\s\epsilon&$\epsilon$&\s\rho&$\rho$\\
+\s\Zeta&$\Zeta$      &\s\Sigma&$\Sigma$    &\s\zeta&$\zeta$      &\s\sigma&$\sigma$\\
+\s\Eta&$\Eta$        &\s\Tau&$\Tau$        &\s\eta&$\eta$        &\s\tau&$\tau$\\
+\s\Theta&$\Theta$    &\s\Upsilon&$\Upsilon$&\s\theta&$\theta$    &\s\upsilon&$\upsilon$\\
+\s\Iota&$\Iota$      &\s\Phi&$\Phi$        &\s\iota&$\iota$      &\s\phi&$\phi$\\
+\s\Kappa&$\Kappa$    &\s\Chi&$\Chi$        &\s\kappa&$\kappa$    &\s\chi&$\chi$\\
+\s\Lambda&$\Lambda$  &\s\Psi&$\Psi$        &\s\lambda&$\lambda$  &\s\psi&$\psi$\\
+\s\Mu&$\Mu$          &\s\Omega&$\Omega$    &\s\mu&$\mu$          &\s\omega&$\omega$\\
+\hline
+\end{tabular}
+
+\medskip
+
+\begin{tabular}{lclclc}
+\s\varsigma&$\varsigma$       & \s\digamma&$\digamma$ & \s\varSigma&$\varSigma$ \\
+\s\varvarsigma&$\varvarsigma$ & \s\koppa&$\koppa$     & \s\Sampi&$\Sampi$       \\
+\s\sampi&$\sampi$             &         &             & \s\Digamma&$\Digamma$
+\end{tabular}
+\caption{Greek letters, upright shapes, default family}
+\label{table:upright}
+\MakeShortVerb\|
+\end{table}
+
+\begin{table}[htbp]
+\capstart
+\DeleteShortVerb\|% a effet global !
+\let\s\string
+\ttfamily
+\lgrmathsetup{style=ISO}
+
+\centering
+\begin{tabular}{|lc|lc|lc|lc|}
+\hline
+\s\Alpha&$\Alpha$    &\s\Nu&$\Nu$          &\s\alpha&$\alpha$    &\s\nu&$\nu$\\
+\s\Beta&$\Beta$      &\s\Xi&$\Xi$          &\s\beta&$\beta$      &\s\xi&$\xi$\\
+\s\Gamma&$\Gamma$    &\s\Omicron&$\Omicron$&\s\gamma&$\gamma$    &\s\omicron&$\omicron$\\
+\s\Delta&$\Delta$    &\s\Pi&$\Pi$          &\s\delta&$\delta$    &\s\pi&$\pi$\\
+\s\Epsilon&$\Epsilon$&\s\Rho&$\Rho$        &\s\epsilon&$\epsilon$&\s\rho&$\rho$\\
+\s\Zeta&$\Zeta$      &\s\Sigma&$\Sigma$    &\s\zeta&$\zeta$      &\s\sigma&$\sigma$\\
+\s\Eta&$\Eta$        &\s\Tau&$\Tau$        &\s\eta&$\eta$        &\s\tau&$\tau$\\
+\s\Theta&$\Theta$    &\s\Upsilon&$\Upsilon$&\s\theta&$\theta$    &\s\upsilon&$\upsilon$\\
+\s\Iota&$\Iota$      &\s\Phi&$\Phi$        &\s\iota&$\iota$      &\s\phi&$\phi$\\
+\s\Kappa&$\Kappa$    &\s\Chi&$\Chi$        &\s\kappa&$\kappa$    &\s\chi&$\chi$\\
+\s\Lambda&$\Lambda$  &\s\Psi&$\Psi$        &\s\lambda&$\lambda$  &\s\psi&$\psi$\\
+\s\Mu&$\Mu$          &\s\Omega&$\Omega$    &\s\mu&$\mu$          &\s\omega&$\omega$\\
+\hline
+\end{tabular}
+\medskip
+
+\begin{tabular}{lclclc}
+\s\varsigma&$\varsigma$       & \s\digamma&$\digamma$ & \s\varSigma&$\varSigma$ \\
+\s\varvarsigma&$\varvarsigma$ & \s\koppa&$\koppa$     & \s\Sampi&$\Sampi$       \\
+\s\sampi&$\sampi$             &         &             & \s\Digamma&$\Digamma$
+\end{tabular}
+\caption{Greek letters, italic shapes, default family}
+\label{table:italic}
+\MakeShortVerb\|
+\end{table}
+
 Here are the options recognized by the package:
 \begin{description}
 \item[font=\meta{font\textunderscore name}] This specifies which font (font family in the
   sens of the \LaTeX{} font selection scheme) to use.  It defaults to |lmr|.
 
+  In \autoref{table:upright} and \autoref{table:italic} we display the
+  glyphs from this default font |lmr| in LGR encoding, available to \LaTeX{}
+  thanks to the
+  support files from the package (in the sense of CTAN or \TeX Live, not of a
+  \LaTeX{} document) \ctanpkg{cbfonts-fd}.%
+%
+  \footnote{Claudio~\textsc{Beccari}, \emph{\LaTeX{} font description files for the CB Greek fonts}, \url{https://ctan.org/pkg/cbfonts-fd}.}
+%
+  It is recommended to user to have a look at its
+  documentation\centeredline{|texdoc cbfonts|}
+  in particular the section on Customizations which mentions alternate shapes
+  (such as |rs|, |ro|, |li|, |iv|, |uv| --- those last two are actually for
+  sans-serif |lmss| ---, and there are also comments relative to the series)
+  and use appropriately the |upshape|, |itshape|, |series| and |boldseries|
+  \lgrmath keys which are documented next.
+
   The allowable names \meta{font\textunderscore name}'s are those |foo| for
-  which a file |LGRfoo.fd| or |lgrfoo.fd| exists on the system.  It happens
-  sometimes that for example a |scale| parameter can be set by defining a
-  suitable macro before hand, advanced \LaTeX{} users will understand what to
-  do from having a look at the file.  Or a \LaTeX{} package file is associated
-  and provides some options for such things.
+  which a file |LGRfoo.fd| or |lgrfoo.fd| exists on the system.
+
+  The above remarks about customization apply generally to all fonts, try to
+  see if there is some documentation associated with the font you choose.
+  Ultimate experts will look into the |.fd| files to see (for example) if there
+  is some interface to rescale the fonts by some factor.
 
   Here is now a list of suitable such font definition files from which you can
   extract usable font family names.  This has been obtained via exercising the
-  Unix |find| utility in a \TeX Live 2022 installation which is not a full
-  installation, so possibly more possibilities exist.
+  Unix |find| utility in a \TeX Live 2022 installation (possibly only partial).
+  To test a font the package provides \cs{lgrmathgreektable} and
+  \cs{lgrmathgreektableextra} which are documented in the next section.
 
   \begin{snugshade}
 \catcode`\'\active\catcode`\`\active
@@ -461,80 +553,6 @@ $ find . -name 'lgr*fd'
 \item[alphabets] Says whether to define \cs{lgrmathup} and \cs{lgrmathit}.
 \end{description}
 
-\begin{table}[htbp]
-\capstart
-\DeleteShortVerb\|% a effet global !
-\let\s\string
-\ttfamily
-\lgrmathsetup{style=fReNcH}% testing lowercasing works
-
-\centering
-
-\begin{tabular}{|lc|lc|lc|lc|}
-\hline
-\s\Alpha&$\Alpha$    &\s\Nu&$\Nu$          &\s\alpha&$\alpha$    &\s\nu&$\nu$\\
-\s\Beta&$\Beta$      &\s\Xi&$\Xi$          &\s\beta&$\beta$      &\s\xi&$\xi$\\
-\s\Gamma&$\Gamma$    &\s\Omicron&$\Omicron$&\s\gamma&$\gamma$    &\s\omicron&$\omicron$\\
-\s\Delta&$\Delta$    &\s\Pi&$\Pi$          &\s\delta&$\delta$    &\s\pi&$\pi$\\
-\s\Epsilon&$\Epsilon$&\s\Rho&$\Rho$        &\s\epsilon&$\epsilon$&\s\rho&$\rho$\\
-\s\Zeta&$\Zeta$      &\s\Sigma&$\Sigma$    &\s\zeta&$\zeta$      &\s\sigma&$\sigma$\\
-\s\Eta&$\Eta$        &\s\Tau&$\Tau$        &\s\eta&$\eta$        &\s\tau&$\tau$\\
-\s\Theta&$\Theta$    &\s\Upsilon&$\Upsilon$&\s\theta&$\theta$    &\s\upsilon&$\upsilon$\\
-\s\Iota&$\Iota$      &\s\Phi&$\Phi$        &\s\iota&$\iota$      &\s\phi&$\phi$\\
-\s\Kappa&$\Kappa$    &\s\Chi&$\Chi$        &\s\kappa&$\kappa$    &\s\chi&$\chi$\\
-\s\Lambda&$\Lambda$  &\s\Psi&$\Psi$        &\s\lambda&$\lambda$  &\s\psi&$\psi$\\
-\s\Mu&$\Mu$          &\s\Omega&$\Omega$    &\s\mu&$\mu$          &\s\omega&$\omega$\\
-\hline
-\end{tabular}
-
-\medskip
-
-\begin{tabular}{lclclc}
-\s\varsigma&$\varsigma$       & \s\digamma&$\digamma$ & \s\varSigma&$\varSigma$ \\
-\s\varvarsigma&$\varvarsigma$ & \s\koppa&$\koppa$     & \s\Sampi&$\Sampi$       \\
-\s\sampi&$\sampi$             &         &             & \s\Digamma&$\Digamma$
-\end{tabular}
-\caption{Greek letters, upright shapes, default family}
-\label{table:upright}
-\MakeShortVerb\|
-\end{table}
-
-\begin{table}[htbp]
-\capstart
-\DeleteShortVerb\|% a effet global !
-\let\s\string
-\ttfamily
-\lgrmathsetup{style=ISO}
-
-\centering
-\begin{tabular}{|lc|lc|lc|lc|}
-\hline
-\s\Alpha&$\Alpha$    &\s\Nu&$\Nu$          &\s\alpha&$\alpha$    &\s\nu&$\nu$\\
-\s\Beta&$\Beta$      &\s\Xi&$\Xi$          &\s\beta&$\beta$      &\s\xi&$\xi$\\
-\s\Gamma&$\Gamma$    &\s\Omicron&$\Omicron$&\s\gamma&$\gamma$    &\s\omicron&$\omicron$\\
-\s\Delta&$\Delta$    &\s\Pi&$\Pi$          &\s\delta&$\delta$    &\s\pi&$\pi$\\
-\s\Epsilon&$\Epsilon$&\s\Rho&$\Rho$        &\s\epsilon&$\epsilon$&\s\rho&$\rho$\\
-\s\Zeta&$\Zeta$      &\s\Sigma&$\Sigma$    &\s\zeta&$\zeta$      &\s\sigma&$\sigma$\\
-\s\Eta&$\Eta$        &\s\Tau&$\Tau$        &\s\eta&$\eta$        &\s\tau&$\tau$\\
-\s\Theta&$\Theta$    &\s\Upsilon&$\Upsilon$&\s\theta&$\theta$    &\s\upsilon&$\upsilon$\\
-\s\Iota&$\Iota$      &\s\Phi&$\Phi$        &\s\iota&$\iota$      &\s\phi&$\phi$\\
-\s\Kappa&$\Kappa$    &\s\Chi&$\Chi$        &\s\kappa&$\kappa$    &\s\chi&$\chi$\\
-\s\Lambda&$\Lambda$  &\s\Psi&$\Psi$        &\s\lambda&$\lambda$  &\s\psi&$\psi$\\
-\s\Mu&$\Mu$          &\s\Omega&$\Omega$    &\s\mu&$\mu$          &\s\omega&$\omega$\\
-\hline
-\end{tabular}
-\medskip
-
-\begin{tabular}{lclclc}
-\s\varsigma&$\varsigma$       & \s\digamma&$\digamma$ & \s\varSigma&$\varSigma$ \\
-\s\varvarsigma&$\varvarsigma$ & \s\koppa&$\koppa$     & \s\Sampi&$\Sampi$       \\
-\s\sampi&$\sampi$             &         &             & \s\Digamma&$\Digamma$
-\end{tabular}
-\caption{Greek letters, italic shapes, default family}
-\label{table:italic}
-\MakeShortVerb\|
-\end{table}
-
 \section{Commands of the \lgrmath package}
 
 Here are the commands defined by the package:
@@ -564,13 +582,7 @@ Miscellaneous remarks:
   options originating from the \cs{usepackage} preamble declaration (or some
   options handed over via \cs{PassOptionsToPackage} or options passed to
   \cs{lgrmathsetup} in the preamble or body).
-\item In \autoref{table:upright} and \autoref{table:italic} we display the
-  glyphs from default font |lmr| which is made available to \LaTeX{} via
-  support files from the package \ctanpkg{cbfonts-fd}.%
-%
-  \footnote{Claudio~\textsc{Beccari}, \emph{\LaTeX{} font description files for the CB Greek fonts}, \url{https://ctan.org/pkg/cbfonts-fd}}
-%
-  The extra glyphs
+\item The extra glyphs
   shown underneath the framed box will not be available will all fonts.
 \end{enumerate}
 
